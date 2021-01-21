@@ -19,18 +19,22 @@
   "license": "BSD-3-Clause",
   "main": "lib/",
   "dependencies": {
+    "@types/lru-cache": "^5.1.0",
     "crypto-ld": "^3.7.0",
     "lru-cache": "^6.0.0",
     "security-context": "^4.0.0",
     "x25519-key-pair": "^3.0.0"
   },
   "devDependencies": {
+    "@types/chai": "^4.2.14",
+    "@types/mocha": "^8.2.0",
     "chai": "^4.2.0",
     "cross-env": "^7.0.2",
     "eslint": "^7.9.0",
     "eslint-config-digitalbazaar": "^2.6.1",
-    "mocha": "^7.1.1",
-    "nyc": "^15.0.1"
+    "mocha": "^7.2.0",
+    "nyc": "^15.0.1",
+    "ts-node": "^9.1.1"
   },
   "engines": {
     "node": ">=8.6.0"
@@ -41,7 +45,7 @@
     "DID"
   ],
   "scripts": {
-    "test": "npm run test-node",
+    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts'",
     "test-node": "cross-env NODE_ENV=test mocha --preserve-symlinks -t 30000 -A -R ${REPORTER:-spec} tests/*.spec.js",
     "preversion": "npm test",
     "postversion": "git push --follow-tags",

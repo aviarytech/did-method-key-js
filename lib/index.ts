@@ -1,9 +1,9 @@
 /*!
  * Copyright (c) 2019-2020 Digital Bazaar, Inc. All rights reserved.
  */
-'use strict';
+"use strict";
 
-const Driver = require('./Driver');
+import { Driver } from "./Driver";
 
 /**
  * Helper method to match the `.driver()` API of other `did-io` plugins.
@@ -14,6 +14,6 @@ const Driver = require('./Driver');
  *
  * @returns {{get, generate, keyToDidDoc}}
  */
-module.exports.driver = (options = {}) => {
+export const driver = (options = {}) => {
   return new Driver(options);
 };
